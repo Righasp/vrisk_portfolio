@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "live-server src",
-    "build": "echo 'Build process not defined yet.'"
+    "build": "mkdir -p public && cp -r src/* public/"
   },
   "author": "Your Name",
   "license": "MIT",
