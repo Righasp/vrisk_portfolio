@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,33 +7,91 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Consolas, 'Courier New', monospace;
     line-height: 1.6;
-    background-color: #121212; /* Dark mode background */
-    background-image: linear-gradient(
-        135deg,
-        rgba(38, 166, 154, 0.1) 0%,
-        rgba(38, 166, 154, 0.05) 50%,
-        transparent 100%
-    ); /* Subtle teal gradient background */
-    background-attachment: fixed;
-    background-size: cover;
-    color: #e0e0e0; /* Light text for contrast */
+    background-color: #121212;
+    color: #e0e0e0;
     padding: 0 1rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.wire {
+    position: fixed;
+    z-index: -1;
+}
+
+.wire-h, .wire-v {
+    position: fixed;
+    background: #f5c842;
+    border-radius: 2.5px;
+    animation: wireHorizontalMove 3s ease-in-out forwards;
+    z-index: -1;
+}
+
+.lightning {
+    position: fixed;
+    background: #f5c842;
+    box-shadow: 0 0 4px 1px rgba(245, 200, 66, 0.4);
+    z-index: 0;
+    border-radius: 0;
+    pointer-events: none;
+}
+
+@keyframes wireHorizontalMove {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+        width: 20px;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        width: var(--length, 100px);
+        transform: translateX(var(--moveX, 100px));
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes wireVerticalMove {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+        height: 20px;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        height: var(--length, 100px);
+        transform: translateY(var(--moveY, 100px));
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(135deg, #1e1e1e, #2c2c2c); /* Dark gradient for header */
+    background: rgba(30, 30, 30, 0.6); /* translucent glass effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #e0e0e0;
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     margin: 2rem auto;
     position: relative;
     text-align: center;
+    z-index: 1;
 }
 
 header .logo {
@@ -39,57 +99,62 @@ header .logo {
     top: 50%;
     left: 2rem;
     transform: translateY(-50%);
-    width: 200px;
+    width: 130px;
     height: auto;
     vertical-align: middle;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(0 0 10px rgba(245, 200, 66, 0.4)); /* golden glow */
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 header .logo:hover {
-    transform: scale(1.1) translateY(-50%);
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+    transform: scale(1.05) translateY(-50%);
+    filter: drop-shadow(0 0 20px rgba(245, 200, 66, 0.7)); /* stronger golden glow on hover */
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.3rem;
     margin-bottom: 1rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    color: #26a69a; /* Teal accent for heading */
+    color: #f5c842;
+    font-weight: 600;
 }
 
 .card {
-    background: #1e1e1e; /* Dark card background */
+    background: rgba(30, 30, 30, 0.6); /* translucent background */
+    backdrop-filter: blur(10px); /* frosted glass blur */
+    -webkit-backdrop-filter: blur(10px); /* for Safari */
     padding: 3rem 2rem;
     margin: 2rem auto;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* subtle border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     max-width: 1200px;
     color: #e0e0e0;
     text-align: center;
     position: relative;
-    overflow: visible; /* Ensure glow isn't clipped */
+    overflow: visible;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 12px 4px rgba(38, 166, 154, 0.4); /* Teal glow on all four sides */
+    box-shadow: 0 0 16px 4px rgba(245, 200, 66, 0.3);
 }
 
 .card h2 {
-    color: #26a69a; /* Teal accent for card headings */
+    color: #f5c842;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .card .content, .card .team-grid {
     max-width: 1000px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.8;
     opacity: 0;
     transform: translateY(20px);
@@ -108,7 +173,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1.2rem;
-    color: #757575; /* Lighter gray for placeholder text */
+    color: #757575;
     opacity: 1;
     transition: opacity 0.5s ease;
 }
@@ -117,33 +182,16 @@ h1 {
     opacity: 0;
 }
 
-#problem-statement::before {
-    content: "Hover to reveal Problem Statement";
-}
-
-#introduction::before {
-    content: "Hover to reveal Introduction";
-}
-
-#implementation::before {
-    content: "Hover to reveal Implementation";
-}
-
-#methodology::before {
-    content: "Hover to reveal Methodology";
-}
-
-#progress::before {
-    content: "Hover to reveal Progress";
-}
-
-#team::before {
-    content: "Hover to reveal Team Members";
-}
+#problem-statement::before { content: "Hover to reveal Problem Statement"; }
+#introduction::before { content: "Hover to reveal Introduction"; }
+#implementation::before { content: "Hover to reveal Implementation"; }
+#methodology::before { content: "Hover to reveal Methodology"; }
+#progress::before { content: "Hover to reveal Progress"; }
+#team::before { content: "Hover to reveal Team Members"; }
 
 #team {
-    padding: 1.5rem 2rem; /* Reduced padding for team card */
-    min-height: 150px; /* Consistent height when team-grid is hidden */
+    padding: 1.5rem 2rem;
+    min-height: 150px;
 }
 
 .team-grid {
@@ -155,7 +203,7 @@ h1 {
 }
 
 .team-grid div {
-    background: #ffffff; /* White background for team boxes */
+    background: #ffffff;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -165,21 +213,21 @@ h1 {
 
 .team-grid div:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 12px 4px rgba(38, 166, 154, 0.4); /* Teal glow on all four sides */
+    box-shadow: 0 0 12px 4px rgba(245, 200, 66, 0.4);
 }
 
 .team-grid div p {
-    opacity: 0; /* Hide Lorem ipsum text by default */
+    opacity: 0;
     transition: opacity 0.3s ease;
-    color: #333; /* Dark text for readability on white background */
+    color: #333;
 }
 
 .team-grid div:hover p {
-    opacity: 1; /* Show Lorem ipsum text on individual member hover */
+    opacity: 1;
 }
 
 .team-grid h3 {
-    color: #333; /* Dark text for readability on white background */
+    color: #333;
     margin-bottom: 0.5rem;
 }
 
@@ -195,11 +243,12 @@ h1 {
 }
 
 footer {
-    background: linear-gradient(135deg, #1e1e1e, #2c2c2c); /* Dark gradient for footer */
+    background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
     color: #e0e0e0;
     text-align: center;
     padding: 1rem;
     margin-top: 2rem;
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -219,15 +268,15 @@ footer {
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     #team {
-        padding: 1rem 1rem; /* Reduced padding for mobile */
+        padding: 1rem 1rem;
         min-height: 120px;
     }
 
@@ -235,4 +284,14 @@ footer {
         width: 80px;
         height: 80px;
     }
+}
+
+.lightning-svg {
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    pointer-events: none;
+    z-index: 0;
+    filter: drop-shadow(0 0 4px rgba(245, 200, 66, 0.4));
+    overflow: visible;
 }
