@@ -1,15 +1,22 @@
 {
-  "name": "competition-website",
+  "name": "web-project",
   "version": "1.0.0",
-  "description": "A website for the competition showcasing problem statement, methodology, implementation, progress, and team members.",
-  "main": "src/index.js",
+  "description": "A simple web project using HTML, CSS, and JavaScript.",
+  "main": "src/js/main.js",
   "scripts": {
     "start": "live-server src",
-    "build": "mkdir -p public && cp -r src/* public/"
+    "build": "echo 'No build process defined.'"
   },
+  "keywords": [
+    "html",
+    "css",
+    "javascript",
+    "web"
+  ],
   "author": "Your Name",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "live-server": "^1.2.1"
   }
 }

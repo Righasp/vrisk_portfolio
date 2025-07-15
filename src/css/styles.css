@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #121212; /* Dark mode background */
+    background-image: linear-gradient(
+        135deg,
+        rgba(38, 166, 154, 0.1) 0%,
+        rgba(38, 166, 154, 0.05) 50%,
+        transparent 100%
+    ); /* Subtle teal gradient background */
+    background-attachment: fixed;
+    background-size: cover;
+    color: #e0e0e0; /* Light text for contrast */
+    padding: 0 1rem;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #1e1e1e, #2c2c2c); /* Dark gradient for header */
+    color: #e0e0e0;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 2rem auto;
+    position: relative;
+    text-align: center;
+}
+
+header .logo {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    width: 200px;
+    height: auto;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+header .logo:hover {
+    transform: scale(1.1) translateY(-50%);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    color: #26a69a; /* Teal accent for heading */
+}
+
+.card {
+    background: #1e1e1e; /* Dark card background */
+    padding: 3rem 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    color: #e0e0e0;
+    text-align: center;
+    position: relative;
+    overflow: visible; /* Ensure glow isn't clipped */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px 4px rgba(38, 166, 154, 0.4); /* Teal glow on all four sides */
+}
+
+.card h2 {
+    color: #26a69a; /* Teal accent for card headings */
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card .content, .card .team-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card:hover .content, .card:hover .team-grid {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    color: #757575; /* Lighter gray for placeholder text */
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.card:hover::before {
+    opacity: 0;
+}
+
+#problem-statement::before {
+    content: "Hover to reveal Problem Statement";
+}
+
+#introduction::before {
+    content: "Hover to reveal Introduction";
+}
+
+#implementation::before {
+    content: "Hover to reveal Implementation";
+}
+
+#methodology::before {
+    content: "Hover to reveal Methodology";
+}
+
+#progress::before {
+    content: "Hover to reveal Progress";
+}
+
+#team::before {
+    content: "Hover to reveal Team Members";
+}
+
+#team {
+    padding: 1.5rem 2rem; /* Reduced padding for team card */
+    min-height: 150px; /* Consistent height when team-grid is hidden */
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-grid div {
+    background: #ffffff; /* White background for team boxes */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-grid div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px 4px rgba(38, 166, 154, 0.4); /* Teal glow on all four sides */
+}
+
+.team-grid div p {
+    opacity: 0; /* Hide Lorem ipsum text by default */
+    transition: opacity 0.3s ease;
+    color: #333; /* Dark text for readability on white background */
+}
+
+.team-grid div:hover p {
+    opacity: 1; /* Show Lorem ipsum text on individual member hover */
+}
+
+.team-grid h3 {
+    color: #333; /* Dark text for readability on white background */
+    margin-bottom: 0.5rem;
+}
+
+.team-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    background: linear-gradient(135deg, #1e1e1e, #2c2c2c); /* Dark gradient for footer */
+    color: #e0e0e0;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 1rem;
+    }
+
+    header .logo {
+        position: static;
+        transform: none;
+        margin-bottom: 1rem;
+        width: 150px;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    #team {
+        padding: 1rem 1rem; /* Reduced padding for mobile */
+        min-height: 120px;
+    }
+
+    .team-img {
+        width: 80px;
+        height: 80px;
+    }
+}
